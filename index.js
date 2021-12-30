@@ -1,6 +1,4 @@
 // index.js - ProgettoIng2 - Carraro Francesco
-// 2
-// 4
 
 var express = require('express');
 var app = express();
