@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/francescocarraro77/ProgettoIng2/issues"
   },
-  "homepage": "https://github.com/francescocarraro77/ProgettoIng2#readme"
+  "homepage": "https://github.com/francescocarraro77/ProgettoIng2#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
