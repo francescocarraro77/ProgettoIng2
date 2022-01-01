@@ -28,4 +28,19 @@ app.get("/api/listapersonehtml", function(req, res) {
   res.sendFile(path.join(__dirname + '/listapersonehtml.html'));
 });
 
+app.get("/api/listapersonemongo", async (req, res, next) => {
+  try {
+//    data= yourdata
+//    res.send(data)
+    const query1 = personaModello.find();
+    const result1 = await query1.exec();
+    //console.log(result1);
+    res.status(200).send(result1);
+    
+} catch (err) {
+    next(err);
+  }
+})
+
+
 module.exports = app;
