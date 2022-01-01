@@ -35,4 +35,5 @@ git checkout master
 // per tornare alla testa dei commit
 
 ssh-keygen -t rsa -C "francesco.carraro@studenti.unitn.it"
-// per creare una chiave ssh in un nuovo client
+// verrà creata una nuova chiave in c:\users\XXXXX\.ssh\id_rsa.pub che bisogna inserire nelle impostazioni web di github
+
