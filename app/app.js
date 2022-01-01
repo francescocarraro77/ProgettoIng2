@@ -24,7 +24,7 @@ app.post('/getpost', function (req, res) {
   res.send('Get post');
 });
 
-app.get("/api/listapersonehtmlmongo", function(req, res) {
+app.get("/api/listapersonehtml", function(req, res) {
   res.sendFile(path.join(__dirname + '/listapersonehtml.html'));
 });
 
