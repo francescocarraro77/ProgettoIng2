@@ -4,8 +4,9 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-//app.use(bodyParser.json()); // support json encoded bodies
-//app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // test senza un metodo preciso (funziona con qualsiasi metodo)
 app.all('/alltest', function (req, res, next) {
@@ -41,5 +42,22 @@ app.get("/api/listapersonejson", async (req, res, next) => {
   }
 })
 
+app.get("/api/inseriscimongo", function(req, res) {
+  res.sendFile(path.join(__dirname + '/inseriscimongo.html'));
+});
+
+
+app.post("/api/inseriscimongo", function(req,res){
+
+  const persona = new personaModello({Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno});
+
+  persona.save(function (err) {
+    if (err) return console.error(err);
+    console.log("Inserimento effettuato");
+  });
+  res.send("Inserito in mongo");
+  console.log("Inserito in mongo");
+
+});
 
 module.exports = app;
