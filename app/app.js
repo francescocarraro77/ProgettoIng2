@@ -42,10 +42,9 @@ app.get("/api/listapersonejson", async (req, res, next) => {
   }
 })
 
-app.all("/api/inseriscipersona", function(req, res) {
+app.get("/api/inseriscipersona", function(req, res) {
   res.sendFile(path.join(__dirname + '/inseriscipersona.html'));
 });
-
 
 app.post("/api/inseriscipersona", function(req,res){
 
