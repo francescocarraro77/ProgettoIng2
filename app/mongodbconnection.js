@@ -1,24 +1,13 @@
+// mongodbconnection.js
+
 /*
 Stringa di connessione Compass:
 mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority
 */
 
-/*
-https://www.mongodb.com/developer/how-to/use-atlas-on-heroku/ utilizzo heroku su Atlas
-*/
-
-
-
 const mongoose = require('mongoose');
 
-  // stringa di connessione heroku
-const uri = process.env.MONGODB_URI; 
-
-///////////////// OPPURE ////////////////////
-
-  //striga di connessione locale
-//let dbURI = 'mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority';
-
+let dbURI = 'mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGODB_URI;
 }
