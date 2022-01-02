@@ -59,4 +59,15 @@ app.post("/api/inseriscipersona", function(req,res){
 
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Ritorna un singolo product id se presente
+app.get('/api/persone/:id', function (req, res) {
+var id = req.params.id;
+//console.log(id);
+res.send(id);
+const persona = new personaModello({Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno});
+
+});
+
 module.exports = app;
