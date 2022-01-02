@@ -42,12 +42,12 @@ app.get("/api/listapersonejson", async (req, res, next) => {
   }
 })
 
-app.get("/api/inseriscimongo", function(req, res) {
-  res.sendFile(path.join(__dirname + '/inseriscimongo.html'));
+app.all("/api/inseriscipersona", function(req, res) {
+  res.sendFile(path.join(__dirname + '/inseriscipersona.html'));
 });
 
 
-app.post("/api/inseriscimongo", function(req,res){
+app.post("/api/inseriscipersona", function(req,res){
 
   const persona = new personaModello({Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno});
 
