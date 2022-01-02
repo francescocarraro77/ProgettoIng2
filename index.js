@@ -2,6 +2,9 @@
 
 var express = require('express');
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 // Definisco il file app.js
 const app = require('./app/app.js');
 
@@ -12,8 +15,6 @@ mongodb = require('./app/mongodbconnection.js');
 app.use('/', express.static('public'));
 
 app.set('port', process.env.PORT || 3000);
-
-
 app.listen(app.get('port'), function () {
 console.log('Sono in ascolto sulla porta ' + app.get('port') );
 });
