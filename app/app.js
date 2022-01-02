@@ -27,7 +27,7 @@ app.post('/getpost', function (req, res) {
   res.send('Get post');
 });
 
-app.get("/api/listapersonehtml", function(req, res) {
+app.get("/api/listapersonehtml", function (req, res) {
   res.sendFile(path.join(__dirname + '/listapersonehtml.html'));
 });
 
@@ -36,19 +36,19 @@ app.get("/api/listapersonejson", async (req, res, next) => {
     const query1 = personaModello.find();
     const result1 = await query1.exec();
     res.status(200).send(result1);
-    
-} catch (err) {
+
+  } catch (err) {
     next(err);
   }
 })
 
-app.get("/api/inseriscipersona", function(req, res) {
+app.get("/api/inseriscipersona", function (req, res) {
   res.sendFile(path.join(__dirname + '/inseriscipersona.html'));
 });
 
-app.post("/api/inseriscipersona", function(req,res){
+app.post("/api/inseriscipersona", function (req, res) {
 
-  const persona = new personaModello({Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno});
+  const persona = new personaModello({ Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno });
 
   persona.save(function (err) {
     if (err) return console.error(err);
@@ -61,13 +61,36 @@ app.post("/api/inseriscipersona", function(req,res){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
 // Ritorna un singolo product id se presente
-app.get('/api/persone/:id', function (req, res) {
-var id = req.params.id;
+app.get('/api/persone/:id', async  (req, res,next) {
+/*var id = req.params.id;
 //console.log(id);
 res.send(id);
 const persona = new personaModello({Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno});
 
+try {
+  const query1 = personaModello.find();
+  const result1 = await query1.exec();
+  res.status(200).send(result1);
+  
+} catch (err) {
+  next(err);
+}
 });
+*/
+
+app.get("/persona/:id", (req, res) => {
+  id = req.params.id-1; // sottraggo 1 in quanto l'indice dell'array parte da 0
+    personaModello.find().exec((err, doc) => {
+    if (doc.length > 0) {
+      res.send(doc[id]);
+    } else {
+      res.send({ success: false, message: 'Nessun record presente' });
+    }
+    
+  });
+
+})
 
 module.exports = app;
