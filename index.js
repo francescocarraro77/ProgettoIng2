@@ -1,9 +1,9 @@
 // index.js - ProgettoIng2 - Carraro Francesco
 
+//var app = express();
 var express = require('express');
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 // Definisco il file app.js
 const app = require('./app/app.js');

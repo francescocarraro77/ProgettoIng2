@@ -4,6 +4,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+//app.use(bodyParser.json()); // support json encoded bodies
+//app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // test senza un metodo preciso (funziona con qualsiasi metodo)
 app.all('/alltest', function (req, res, next) {
