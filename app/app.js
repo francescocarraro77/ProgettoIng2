@@ -59,28 +59,7 @@ app.post("/api/inseriscipersona", function (req, res) {
 
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-// Ritorna un singolo product id se presente
-app.get('/api/persone/:id', async  (req, res,next) {
-/*var id = req.params.id;
-//console.log(id);
-res.send(id);
-const persona = new personaModello({Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno});
-
-try {
-  const query1 = personaModello.find();
-  const result1 = await query1.exec();
-  res.status(200).send(result1);
-  
-} catch (err) {
-  next(err);
-}
-});
-*/
-
-app.get("/persona/:id", (req, res) => {
+app.get("/api/persona/:id", (req, res) => {
   id = req.params.id-1; // sottraggo 1 in quanto l'indice dell'array parte da 0
     personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
@@ -92,5 +71,9 @@ app.get("/persona/:id", (req, res) => {
   });
 
 })
+
+app.get("/api/selezionapersona", function (req, res) {
+  res.sendFile(path.join(__dirname + '/selezionapersona.html'));
+});
 
 module.exports = app;

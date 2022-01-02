@@ -32,12 +32,23 @@ async function listaPersone()
     anagraficahtml+=persons[i].Nome; anagraficahtml+=" ";
     anagraficahtml+=persons[i].Anno; anagraficahtml+="<br>";
     document.getElementById("anagrafica").innerHTML=anagraficahtml;
-   
-
   }
 
-}
+  anagraficahtml+="-----------------------";
+  anagraficahtml+="<br>";
 
+  for (var i=0;i<persons.length;i++)
+  {
+    anagraficahtml+="<button> Testo </button>";
+    anagraficahtml+=i+1+" - ";
+//    anagraficahtml+=persons[i].Cognome; anagraficahtml+=" ";
+//    anagraficahtml+=persons[i].Nome; anagraficahtml+=" ";
+//    anagraficahtml+=persons[i].Anno; anagraficahtml+="<br>";
+    document.getElementById("anagrafica").innerHTML=anagraficahtml;
+  }
+
+
+}
 
 </script> 
 </head>
@@ -45,8 +56,28 @@ async function listaPersone()
 <body>
 <h1>Lista persone (HTML)</h1>
 <body onLoad="listaPersone();"></body>
-
 <div id="anagrafica"></div>
+
+<!--
+<body onLoad="listaCombo();"></body>
+<div id="combo"></div>
+-->
+
+<h1>Seleziona persona</h1>
+
+<!--
+<button> Testo </button>
+-->
+
+<select name="example">
+  <option value="A">A</option>
+  <option value="B">B</option>
+</select>
+
+
+<!--
+<input type="text" name="other">
+-->
 
 
 </body>
