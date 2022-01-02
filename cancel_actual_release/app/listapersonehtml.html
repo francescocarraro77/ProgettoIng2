@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script>
+
+async function getPersons()
+{
+  
+	let url='/api/listapersonemongo';
+	try {
+		let res=await fetch(url);
+		return await res.text();
+	} catch (error) {
+		alert("Estrazione non possibile");
+	}
+
+}
+
+async function listaPersone()
+{
+	let persons=await getPersons();
+  persons=JSON.parse(persons);
+
+
+  var anagraficahtml="";
+
+  for (var i=0;i<persons.length;i++)
+  {
+
+    anagraficahtml+=persons[i].Cognome; anagraficahtml+=" ";
+    anagraficahtml+=persons[i].Nome; anagraficahtml+=" ";
+    anagraficahtml+=persons[i].Anno; anagraficahtml+="<br>";
+    document.getElementById("anagrafica").innerHTML=anagraficahtml;
+   
+
+  }
+
+}
+
+
+</script> 
+</head>
+
+<body>
+<h1>Lista persone (HTML)</h1>
+<body onLoad="listaPersone();"></body>
+
+<div id="anagrafica"></div>
+
+
+</body>
+
+</html>
