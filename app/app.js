@@ -30,7 +30,7 @@ app.get("/api/listapersonehtml", function(req, res) {
   res.sendFile(path.join(__dirname + '/listapersonehtml.html'));
 });
 
-app.get("/api/listapersonemongo", async (req, res, next) => {
+app.get("/api/listapersonejson", async (req, res, next) => {
   try {
     const query1 = personaModello.find();
     const result1 = await query1.exec();

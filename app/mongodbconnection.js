@@ -1,30 +1,9 @@
 // mongodbconnection.js
 
-/*
-Stringa di connessione Compass:
-mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority
-*/
-
-//const mongoose = require('mongoose');
-
-
-
-
 const mongoose = require('mongoose');
 
-  // stringa di connessione heroku
-const uri = process.env.MONGODB_URI; 
-
-///////////////// OPPURE ////////////////////
-
-  //striga di connessione locale
-//let dbURI = 'mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority';
-
-
-
-
-
-
+// stringa di connessione heroku
+const uri = process.env.MONGODB_URI;
 
 let dbURI = 'mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority';
 if (process.env.NODE_ENV === 'production') {
@@ -45,20 +24,20 @@ mongoose.connection.on('disconnected', () => {
 });
 
 
-  const { Schema } = mongoose;
+const { Schema } = mongoose;
 
-  const personaSchema = new mongoose.Schema({
-    Id:  Number, // String is shorthand for {type: String}
-    Cognome: String,
-    Nome: String,
-    Anno: Number
-  });
+const personaSchema = new mongoose.Schema({
+  Id: Number, // String is shorthand for {type: String}
+  Cognome: String,
+  Nome: String,
+  Anno: Number
+});
 
-  personaModello = mongoose.model('Anagrafica', personaSchema);
+personaModello = mongoose.model('Anagrafica', personaSchema);
 
 
 
-  
+
 
 
 
