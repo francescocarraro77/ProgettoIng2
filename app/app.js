@@ -5,6 +5,7 @@ var app = express();
 var path = require('path');
 
 var bodyParser = require('body-parser');
+const { Mongoose } = require('mongoose');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -60,14 +61,14 @@ app.post("/api/inseriscipersona", function (req, res) {
 });
 
 app.get("/api/persona/:id", (req, res) => {
-  id = req.params.id-1; // sottraggo 1 in quanto l'indice dell'array parte da 0
-    personaModello.find().exec((err, doc) => {
+  id = req.params.id - 1; // sottraggo 1 in quanto l'indice dell'array parte da 0
+  personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
       res.send(doc[id]);
     } else {
       res.send({ success: false, message: 'Nessun record presente' });
     }
-    
+
   });
 
 })
@@ -75,5 +76,32 @@ app.get("/api/persona/:id", (req, res) => {
 app.get("/api/selezionapersona", function (req, res) {
   res.sendFile(path.join(__dirname + '/selezionapersona.html'));
 });
+
+////////////////////////////////////////////////////////////////////////
+
+app.get('/api/elimina/:id', function (req, res) {
+  var id = req.params.id;
+
+  var MongoClient = require('mongodb').MongoClient;
+  var url = process.env.MONGODB_URI;
+  
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var myquery = {  name: 'Rohit' };
+    db.collection("students").deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      db.close();
+    });
+  });  
+
+
+
+
+
+});
+
+
+
 
 module.exports = app;
