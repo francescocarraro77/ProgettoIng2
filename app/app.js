@@ -80,11 +80,19 @@ app.get("/api/selezionapersona", function (req, res) {
 ////////////////////////////////////////////////////////////////////////
 
 app.get('/api/elimina/:id', function (req, res) {
-  var id = req.params.id;
+  var cognome = req.params.id;
+
+  personaModello.findOneAndDelete({ Cognome: cognome }).exec((err, doc) => {
+    if (doc.length > 0) {
+      //res.send(doc[id]);
+    } else {
+      //res.send({ success: false, message: 'Nessun record presente' });
+    }
+
+  });
 
 });
 
-
-
+////////////////////////////////////////////////////////////////////////
 
 module.exports = app;
