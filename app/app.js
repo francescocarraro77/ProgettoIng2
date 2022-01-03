@@ -60,39 +60,64 @@ app.post("/api/inseriscipersona", function (req, res) {
 
 });
 
+// non ritorna nessun messaggio d'errore se non trova l'item
 app.get("/api/persona/:id", (req, res) => {
   id = req.params.id - 1; // sottraggo 1 in quanto l'indice dell'array parte da 0
   personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
       res.send(doc[id]);
     } else {
-      res.send({ success: false, message: 'Nessun record presente' });
+      res.send("Nessun record presente");
+      console.log("Nessun record presente");
     }
 
   });
 
 })
 
+
+
+
 app.get("/api/selezionapersona", function (req, res) {
   res.sendFile(path.join(__dirname + '/selezionapersona.html'));
 });
 
-////////////////////////////////////////////////////////////////////////
+
+/*
+Elimina versione1 -> se non trova l'elemento, oppure il database è vuoto blocca l'esecuzione del server
+*/
+app.get('/api/v1/elimina/:id', function (req, res) {
+  var cognome = req.params.id;
+  personaModello.findOneAndDelete({ Cognome: cognome }).exec((err, doc) => {
+    if ((doc!=null) && (doc.length > 0)) {
+      res.send("RES KO"); // non viene stampato
+    } else {
+      res.send("RES OK");
+      console.log(doc.lenght);
+    }
+
+  });
+})
 
 app.get('/api/elimina/:id', function (req, res) {
-  var cognome = req.params.id;
 
-  personaModello.findOneAndDelete({ Cognome: cognome }).exec((err, doc) => {
+  id = req.params.id - 1; // sottraggo 1 in quanto l'indice dell'array parte da 0
+  personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
-      //res.send(doc[id]);
+      console.log("Trovato");
+      console.log(doc[id]);
+      console.log(doc.lenght);
     } else {
-      //res.send({ success: false, message: 'Nessun record presente' });
+      console.log("Non trovato");
+      console.log(doc[id]);
+      console.log(doc.lenght);
     }
 
   });
 
-});
+})
 
-////////////////////////////////////////////////////////////////////////
+
+
 
 module.exports = app;
