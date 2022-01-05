@@ -17,28 +17,23 @@
         <h1>Vue JS Prima applicazione</h1>
         v-[nome direttiva]:[nome argomento]
         <ul>
-            <li>disabled</li>
-            <li>template</li>
-            <li>v-if v-else</li>
+            <li>v-On | Eventi</li>
+            <li>Methods</li>
+            <li>Function | $event</li>
+            <li>Mounted</li>
         </ul>
         <hr>
         <div id="app">
             <h2>Contatore</h2>
-            <div v-if="min!=max">
-                <p style="font-size:12em">{{counter}}</p>
-                <div class="row">
-                    <div class="col-6">
-                        <button :disabled='maxDisabled' @click="changeCounter($event,'+')" style="font-size:6em">+</button>
-                    </div>
-                    <div class="col-6">
-                        <button :disabled='minDisabled' @click="changeCounter($event,'-')" style="font-size:6em">-</button>
-                    </div>
+            <p style="font-size:12em">{{counter}}</p>
+            <div class="row">
+                <div class="col-6">
+                    <button v-on:click="changeCounter($event,'+')" style="font-size:6em">+</button>
+                </div>
+                <div class="col-6">
+                    <button @click="changeCounter($event,'-')" style="font-size:6em">-</button>
                 </div>
             </div>
-            <div v-else>
-                Errore min max uguali
-            </div>
- 
         </div>
 
     </div>
@@ -48,42 +43,22 @@
     var app = new Vue({
         el: '#app',
         data: {
-            min: 3,
-            max: 10,
-            minDisabled: true,
-            maxDisabled: false,
-            counter: '0'
+            min : 3,
+            max : 10,
+            counter: 6
         },
-        mounted: function () {
+        mounted:function() {
             console.log('MONTATO CORRETTAMENTE');
-            this.counter = 3;
+            this.counter=5;
         },
         methods: {
-            changeCounter(event, direction) {
+            changeCounter(event,direction) {
                 console.log("event :");
                 console.log(event);
-                console.log("changeCounter :" + direction);
-                if (direction == '+') {
-                    if (this.counter < this.max) {
-                        this.counter++;
-                    }
-                } else if (direction == '-') {
-                    if (this.counter > this.min) {
-                        this.counter--;
-                    }
-                }
-
-                if (this.counter >= this.max) {
-                    this.minDisabled = false;
-                    this.maxDisabled = true;
-                } else if (this.counter <= this.min) {
-                    this.minDisabled = true;
-                    this.maxDisabled = false;
-                } else {
-                    this.minDisabled = false;
-                    this.maxDisabled = false;
-                }
-
+                if (direction == '+' && this.counter<this.max)
+                    this.counter++;
+                else if (direction == '-' && this.counter>this.min)
+                    this.counter--;
 
             },
             cambioImg() {
