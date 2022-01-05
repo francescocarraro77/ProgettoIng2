@@ -28,8 +28,8 @@ app.post('/getpost', function (req, res) {
   res.send('Get post');
 });
 
-app.get("/api/listapersonehtml", function (req, res) {
-  res.sendFile(path.join(__dirname + '/listapersonehtml.html'));
+app.get("/api/v1/listapersonehtml", function (req, res) {
+  res.sendFile(path.join(__dirname + '/listapersonehtmlv1.html'));
 });
 
 app.get("/api/listapersonejson", async (req, res, next) => {
