@@ -1,0 +1,104 @@
+<h1>Lista persone (HTML) v2</h1>
+<ul id="authors"></ul>
+
+
+<script>
+/*
+    const ul = document.getElementById('persone');
+    const lista = document.createDocumentFragment();
+    const url = '/api/listapersonejson';
+
+    fetch(url)
+        .then((response) => { 
+            return response.json();
+        })
+
+        .then((data) => {
+            let persone=data;
+        })
+
+        authors.map(function(persona) {
+            let li = document.createElement('li');
+            let cognome = document.createElement('h2');
+            let nome = document.createElement('span');
+
+            cognome.innerHTML = `${persona.cognome}`;
+            nome.innerHTML = `${persona.nome}`;
+
+            li.appendChild(cognome);
+            li.appendChild(nome);
+            list.appendChild(li);
+
+        });
+        ul.appendChild(lista);
+    })
+*/
+
+/*
+  const ul = document.getElementById('persone');
+  const list = document.createDocumentFragment();
+  const url = '/api/listapersonejson';
+
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      let persone = data;
+
+      persone.map(function(persona) {
+        let li = document.createElement('li');
+        let cognome = document.createElement('h2');
+        let nome = document.createElement('span');
+
+        cognome.innerHTML = `${persona.cognome}`;
+        nome.innerHTML = `${persona.nome}`;
+
+        li.appendChild(cognome);
+        li.appendChild(nome);
+        list.appendChild(li);
+      });
+    }).catch(function(error) {
+      console.log(error);
+    });
+
+  ul.appendChild(lista);
+*/
+
+/*
+  const ul = document.getElementById('authors');
+  const list = document.createDocumentFragment();
+  const url = 'https://jsonplaceholder.typicode.com/users';
+
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      let authors = data;
+
+      authors.map(function(author) {
+        let li = document.createElement('li');
+        let name = document.createElement('h2');
+        let email = document.createElement('span');
+
+        name.innerHTML = `${author.name}`;
+        email.innerHTML = `${author.email}`;
+
+        li.appendChild(name);
+        li.appendChild(email);
+        list.appendChild(li);
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+  ul.appendChild(list);
+*/
+
+
+</script>
+
+
+
