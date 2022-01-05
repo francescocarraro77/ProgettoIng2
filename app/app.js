@@ -29,7 +29,11 @@ app.post('/getpost', function (req, res) {
 });
 
 app.get("/api/v1/listapersonehtml", function (req, res) {
-  res.sendFile(path.join(__dirname + '/listapersonehtmlv1.html'));
+  res.sendFile(path.join(__dirname + '/../public/listapersonehtmlv1.html'));
+});
+
+app.get("/api/v2/listapersonehtml", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../public/listapersonehtmlv2.html'));
 });
 
 app.get("/api/listapersonejson", async (req, res, next) => {
@@ -44,7 +48,7 @@ app.get("/api/listapersonejson", async (req, res, next) => {
 })
 
 app.get("/api/inseriscipersona", function (req, res) {
-  res.sendFile(path.join(__dirname + '/inseriscipersona.html'));
+  res.sendFile(path.join(__dirname + '/../public/inseriscipersona.html'));
 });
 
 app.post("/api/inseriscipersona", function (req, res) {
@@ -79,7 +83,7 @@ app.get("/api/persona/:id", (req, res) => {
 
 
 app.get("/api/selezionapersona", function (req, res) {
-  res.sendFile(path.join(__dirname + '/selezionapersona.html'));
+  res.sendFile(path.join(__dirname + '/../public/selezionapersona.html'));
 });
 
 
