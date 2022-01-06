@@ -20,7 +20,7 @@
             <li>disabled</li>
             <li>template</li>
             <li>v-if v-else</li>
-
+        
         </ul>
         <hr>
         <div id="app">
@@ -35,19 +35,17 @@
                 <p style="font-size:12em">{{counter}}</p>
                 <div class="row">
                     <div class="col-6">
-                        <button :disabled='maxDisabled' @click="changeCounter($event,'+')"
-                            style="font-size:6em">+</button>
+                        <button :disabled='maxDisabled' @click="changeCounter($event,'+')" style="font-size:6em">+</button>
                     </div>
                     <div class="col-6">
-                        <button :disabled='minDisabled' @click="changeCounter($event,'-')"
-                            style="font-size:6em">-</button>
+                        <button :disabled='minDisabled' @click="changeCounter($event,'-')" style="font-size:6em">-</button>
                     </div>
                 </div>
             </div>
             <div v-else>
                 Errore min max uguali
             </div>
-
+ 
         </div>
 
     </div>
@@ -67,93 +65,39 @@
             info: null
 
         },
-        //        mounted:   
-        /*        
-                function () {
-                    console.log('MONTATO CORRETTAMENTE');
-        //            this.counter = 3;
-                },
-        */
-
-        mounted() {
-            axios
-                //      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-
-                .get('http://localhost:3000/api/listapersonejson')
-                .then(response => (this.info = response))
-
-            //      .then(data.info=JSON.parse(data.info))
+//        mounted:   
+/*        
+        function () {
+            console.log('MONTATO CORRETTAMENTE');
+//            this.counter = 3;
         },
+*/
+
+mounted () {
+    axios
+//      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+
+      .get('http://localhost:3000/api/listapersonejson')
+      .then(response => (this.info = response))
+
+//      .then(data.info=JSON.parse(data.info))
+  },
 
         methods: {
 
-            numeropersone() {
+            numeropersone()
+            {
                 return 2;
+},
+            inc1(numero)
+            {
+                return numero +1;
             },
-            inc1(numero) {
-                return numero + 1;
-            },
-            /*
-                        changeCounter(event, direction) {
-                            console.log("event :");
-                            console.log(event);
-                            console.log("changeCounter :" + direction);
-                            if (direction == '+') {
-                                if (this.counter < this.max) {
-                                    this.counter++;
-                                }
-                            } else if (direction == '-') {
-                                if (this.counter > this.min) {
-                                    this.counter--;
-                                }
-                            }
-            
-                            if (this.counter >= this.max) {
-                                this.minDisabled = false;
-                                this.maxDisabled = true;
-                            } else if (this.counter <= this.min) {
-                                this.minDisabled = true;
-                                this.maxDisabled = false;
-                            } else {
-                                this.minDisabled = false;
-                                this.maxDisabled = false;
-                            }
-            
-            
-                        },
-            */
-
-
+/*
             changeCounter(event, direction) {
                 console.log("event :");
                 console.log(event);
                 console.log("changeCounter :" + direction);
-/*                
-                stringa=this.info.data[(this.counter)].Cognome+" "+((this.info.data[(this.counter)].Cognome).length);
-                window.alert(stringa);
-
-                stringa=this.info.data.length;
-                window.alert(stringa);                
-*/
-/*
-                if (direction == '+') {
-                    if (!(this.info.data[(this.counter)].Cognome != null))
-                                this.maxDisabled = true;
-
-                    else if ((this.counter < this.max))
-                        if (this.info.data[(this.counter)+1].Cognome != null)
-                        {
-                            this.counter++;
-                        }
-                }
-                
-                if (direction == '-') {
-                    if (this.counter > this.min) {
-                        this.counter--;
-                    }
-                }
-*/
-
                 if (direction == '+') {
                     if (this.counter < this.max) {
                         this.counter++;
@@ -164,12 +108,36 @@
                     }
                 }
 
-                window.alert(this.counter + " >= "+this.info.data.length);
-
-                if (this.counter>=this.info.data.length)
-                {
-                    windows.alert("Condizione verificata");
+                if (this.counter >= this.max) {
+                    this.minDisabled = false;
                     this.maxDisabled = true;
+                } else if (this.counter <= this.min) {
+                    this.minDisabled = true;
+                    this.maxDisabled = false;
+                } else {
+                    this.minDisabled = false;
+                    this.maxDisabled = false;
+                }
+
+
+            },
+*/
+
+
+            changeCounter(event, direction) {
+                console.log("event :");
+                console.log(event);
+                console.log("changeCounter :" + direction);
+                if (direction == '+') {
+                    if ((this.counter < this.max) && (  this.info.data[ this.counter+1 ].Cognome != null  )) {
+//                        if ( this.info.data[1].Cognome.lenght > 0 )
+
+                        this.counter++;
+                    }
+                } else if (direction == '-') {
+                    if (this.counter > this.min) {
+                        this.counter--;
+                    }
                 }
 
                 if (this.counter >= this.max) {
