@@ -121,6 +121,10 @@ app.get('/api/elimina/:id', function (req, res) {
 
 })
 
+app.get("/api/eliminapersona", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../vue/eliminapersona.html'));
+});
+
 
 
 
