@@ -140,4 +140,19 @@ app.get("/api/eliminapersona", function (req, res) {
   res.sendFile(path.join(__dirname + '/../vue/eliminapersona.html'));
 });
 
+
+/*
+//Or we can protect specific endpoints, by associating the tockenChecker with specific url:
+
+app.use('/api/v1/booklendings', tokenChecker);
+...
+// only requests matching '/api/v1/booklendings' have been authenticated by the tokenChecker
+app.use('/api/v1/booklendings', booklendings);
+// Requests on '/api/v1/students' are not authenticated
+app.use('/api/v1/students', books);
+*/
+
+
+
+
 module.exports = app;
