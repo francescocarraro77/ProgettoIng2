@@ -77,7 +77,8 @@
 
         mounted() {
             axios
-                .get('http://localhost:3000/api/listapersonejson')
+//                .get('http://localhost:3000/api/listapersonejson')
+                .get('/api/listapersonejson')
                 .then(response => (this.info = response))
         },
 
@@ -89,7 +90,11 @@
                 window.alert("Elimina persona "+ this.info.data[this.counter]._id + " " + this.info.data[this.counter].Cognome);   
                 axios
 //                .get('http://localhost:3000/api/v1/elimina/Bonvicin')
-                .get('http://localhost:3000/api/v1/elimina/'+this.info.data[this.counter].Cognome)
+
+
+//                .get('http://localhost:3000/api/v1/elimina/'+this.info.data[this.counter].Cognome)
+                .get('/api/v1/elimina/'+this.info.data[this.counter].Cognome)
+
 //                vm.$forceUpdate();
 //                this.$router.go(0);
 //                this.$forceUpdate()
