@@ -97,7 +97,7 @@ app.get('/api/v1/elimina/:id', function (req, res) {
       res.send("RES KO"); // non viene stampato
     } else {
       res.send("RES OK");
-      console.log(doc.lenght);
+      console.log(doc.length);
     }
 
   });
