@@ -43,10 +43,12 @@
                 <label>Anno di nascita</label>     
                 <input type="number" name="anno">        
                 <input type="submit" name="Inserisci">
-                <input type="submit" name="Inserisci2">
-
             </form>
 
+            <div class="col-6">
+                <button  @click="refreshpagina(1)"
+                    style="font-size:2em">Refresh</button>
+            </div>
 
 
             <div v-if="min!=max">
@@ -89,7 +91,7 @@
 
         data: {
             min: 0,
-            max: 10,
+            max: 20,
             minDisabled: true,
             maxDisabled: false,
             counter: 0,
@@ -111,7 +113,10 @@
 
         methods: {
 
-
+            refreshpagina(_millisecondi)
+            {
+                window.location.reload();
+            },
 
             inserisciPersona()
             {
@@ -203,20 +208,7 @@
         }
     })
 
-    function refreshpagina(_millisecondi)
-            {
-//                window.location.reload();
-//                setTimeout(location.href=”http://www.html.it”‘,1000);
-                //window.alert("Helloworld");
-//                window.location.reload(true);
-//                RefreshWindow();
-//history.go(0);
 
-
-            	setTimeout("location.reload(true);", _millisecondi );
-
-
-            }
 </script>
 
 </html>
