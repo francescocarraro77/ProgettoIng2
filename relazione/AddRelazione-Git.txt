@@ -37,3 +37,20 @@ git checkout master
 ssh-keygen -t rsa -C "francesco.carraro@studenti.unitn.it"
 // verrà creata una nuova chiave in c:\users\XXXXX\.ssh\id_rsa.pub che bisogna inserire nelle impostazioni web di github
 
+
+
+
+
+npm test
+// per lanciare jest che andrà a cercare in tutta la repository eventuali file *.test.js
+
+Heroku
+
+Install Heroku CLI
+https://devcenter.heroku.com/articles/heroku-cli
+CLI log in:
+heroku login
+
+
+
+
