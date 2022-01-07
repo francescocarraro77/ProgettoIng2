@@ -47,11 +47,11 @@ app.get("/api/listapersonejson", async (req, res, next) => {
   }
 })
 
-app.get("/api/inseriscipersona", function (req, res) {
+app.get("/api/v1/inseriscipersona", function (req, res) {
   res.sendFile(path.join(__dirname + '/../public/inseriscipersona.html'));
 });
 
-app.post("/api/inseriscipersona", function (req, res) {
+app.post("/api/v1/inseriscipersona", function (req, res) {
 
   const persona = new personaModello({ Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno });
 
@@ -61,6 +61,21 @@ app.post("/api/inseriscipersona", function (req, res) {
   });
   res.send("Inserito in mongo");
   console.log("Inserito in mongo");
+
+});
+
+// post per applicazione Vue
+app.post("/api/v2/inseriscipersona", function (req, res) {
+
+  const persona = new personaModello({ Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno });
+
+  persona.save(function (err) {
+    if (err) return console.error(err);
+    console.log("Inserimento effettuato");
+  });
+//  res.send("Inserito in mongo");
+  console.log("Inserito in mongo");
+//  window.location.reload();
 
 });
 

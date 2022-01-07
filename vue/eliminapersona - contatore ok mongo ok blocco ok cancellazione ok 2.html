@@ -24,30 +24,7 @@
             {{ info.data }}
             <h5>{{ "Numero items ->" + this.info.data.length }}</h5>
 
-            <input v-model="insnome" placeholder="edit me">
-            <p>Message is: {{ insnome }}</p>
-            <input v-model="inscognome" placeholder="edit me">
-            <p>Message is: {{ inscognome }}</p>
-            <input v-model="inseta" placeholder="edit me">
-            <p>Message is: {{ inseta }}</p>
             
-            <div class="col-6">
-                <button  @click="inserisciPersona()"
-                    style="font-size:2em">Inserisci</button>
-            </div>
-            <form action="/api/v2/inseriscipersona" method="POST" >
-                <label>(MONGO) Nome</label>
-                <input type="text" name="nome">
-                <label>Cognome</label>
-                <input type="text" name="cognome">
-                <label>Anno di nascita</label>     
-                <input type="number" name="anno">        
-                <input type="submit" name="Inserisci">
-                <input type="submit" name="Inserisci2">
-
-            </form>
-
-
 
             <div v-if="min!=max">
                 <p style="font-size:4em">{{counter+1 + " " + info.data[counter].Cognome+" "+info.data[counter].Nome+" "+info.data[counter].Anno}}</p>
@@ -70,7 +47,7 @@
 
 <div class="col-6">
     <button  @click="eliminaPersona()"
-        style="font-size:2em">Elimina</button>
+        style="font-size:6em">Elimina</button>
 </div>
 
             </div>
@@ -94,11 +71,7 @@
             maxDisabled: false,
             counter: 0,
 
-            info: null,
-
-            insnome: null,
-            inscognome:null,
-            inseta:2000
+            info: null
 
         },
 
@@ -111,21 +84,6 @@
 
         methods: {
 
-
-
-            inserisciPersona()
-            {
-
-                const persona = new personaModello({ Cognome: insnome, Nome: inscognome, Anno: inseta });
-
-                persona.save(function (err) {
-                if (err) return console.error(err);
-                console.log("Inserimento effettuato");
-                });
-//                res.send("Inserito in mongo");  
-                console.log("Inserito in mongo");
-
-            },
         
             eliminaPersona()
             {
@@ -202,21 +160,6 @@
             }
         }
     })
-
-    function refreshpagina(_millisecondi)
-            {
-//                window.location.reload();
-//                setTimeout(location.href=”http://www.html.it”‘,1000);
-                //window.alert("Helloworld");
-//                window.location.reload(true);
-//                RefreshWindow();
-//history.go(0);
-
-
-            	setTimeout("location.reload(true);", _millisecondi );
-
-
-            }
 </script>
 
 </html>
