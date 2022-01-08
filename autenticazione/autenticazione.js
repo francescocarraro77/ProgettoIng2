@@ -1,0 +1,14 @@
+const express=require('express');
+const routerLogin=require('./Routing/loginRouter');
+const mid=require('./Middleware/mid');
+const app=express();
+
+app.use(express.json());
+
+app.use('/login',routerLogin);
+
+app.get('/',[mid.checkAuth],(req,res) => {
+    res.end("Ciao");
+});
+
+app.listen('3000',()=>console.log("Sono in ascolto"));

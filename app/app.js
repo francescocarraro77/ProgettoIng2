@@ -4,10 +4,14 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+
+
+
 var bodyParser = require('body-parser');
 const { Mongoose } = require('mongoose');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 // test senza un metodo preciso (funziona con qualsiasi metodo)
 app.all('/alltest', function (req, res, next) {
@@ -152,6 +156,14 @@ app.use('/api/v1/booklendings', booklendings);
 app.use('/api/v1/students', books);
 */
 
+
+/*
+app.use('/api/v1/autenticazione', autenticazione);
+app.use('/api/v1/autenticazione', tokenChecker);
+app.get("/api/v1/autenticazione", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../public/listapersonehtmlv1.html'));
+});
+*/
 
 
 
