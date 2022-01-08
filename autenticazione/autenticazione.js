@@ -7,10 +7,10 @@ app.use(express.json());
 
 app.use('/login',routerLogin);
 
-
+/*
 app.get('/foto',[mid.checkAuth],(req,res) => {
     res.end("Sono la home");
 });
-
+*/
 
 app.listen('3000',()=>console.log("Sono in ascolto"));

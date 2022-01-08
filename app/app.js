@@ -3,6 +3,16 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+//var jwt=require('jsonwebtoken');
+//const jwt=require('../Middleware/jwt');
+const jwt=require('../autenticazione/Middleware/jwt');
+
+//const routerLogin=require('./Routing/loginRouter');
+//const mid=require('./Middleware/mid');
+
+//const routerLogin=require('../autenticazione/Routing/loginRouter');
+//const mid=require('../autenticazione/Middleware/mid');
+
 
 
 
@@ -174,9 +184,46 @@ app.use(express.json());
 
 app.use('/login',routerLogin);
 
-
+/*
 app.get('/foto',[mid.checkAuth],(req,res) => {
     res.end("Sono la home");
+});
+*/
+
+app.get("/api/v1/generatoken", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../autenticazione/formautenticazione.html'));
+});
+
+app.post("/api/v1/generatoken", function (req, res) {
+
+
+  console.log(req.body.username,req.body.password);
+  if (req.body.username=='pippo'){
+      let token=jwt.setToken(2,req.body.username);
+      let payload=jwt.getPayload(token);
+      res.json({ token:token,payload:payload});
+  } else {
+      res.sendStatus(401);
+  }
+
+
+
+
+/*
+  const persona = new personaModello({ Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno });
+
+  persona.save(function (err) {
+    if (err) return console.error(err);
+    console.log("Inserimento effettuato");
+  });
+  res.send("Inserito in mongo");
+  console.log("Inserito in mongo");
+*/
+
+app.get('/foto',[mid.checkAuth],(req,res) => {
+  res.end("Sono la home");
+});
+
 });
 
 

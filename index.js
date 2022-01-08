@@ -10,7 +10,7 @@ const app = require('./app/app.js');
 
 //const autenticazione = require('./app/autenticazione.js');
 //const tokenChecker = require ('./app/tokenChecker.js');
-const autenticazione = require ('./app/autenticazione.js');
+//const autenticazione = require ('./app/autenticazione.js');
 
 // Definisco la connessione a mongo
 mongodb = require('./app/mongodbconnection.js');
