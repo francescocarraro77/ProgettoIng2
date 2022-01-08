@@ -7,8 +7,10 @@ app.use(express.json());
 
 app.use('/login',routerLogin);
 
+
 app.get('/',[mid.checkAuth],(req,res) => {
-    res.end("Ciao");
+    res.end("Sono la home");
 });
+
 
 app.listen('3000',()=>console.log("Sono in ascolto"));
