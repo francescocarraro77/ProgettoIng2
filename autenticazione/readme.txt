@@ -13,7 +13,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJwaXBwbyIsImlhdCI
 
 Da postman:
 
-GET su localhost:3000/
+GET su localhost:3000/ o https://progettoing2.herokuapp.com/foto
 Headers:
 Name Authorization
 Value Bearer + token
