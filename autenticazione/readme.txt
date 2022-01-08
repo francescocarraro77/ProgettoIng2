@@ -1,6 +1,6 @@
 Da postman:
 
-POST su localhost:3000/login
+POST su localhost:3000/login o https://progettoing2.herokuapp.com/login
 body json:
 {
     "username":"pippo",

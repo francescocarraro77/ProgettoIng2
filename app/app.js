@@ -165,6 +165,19 @@ app.get("/api/v1/autenticazione", function (req, res) {
 });
 */
 
+// const express=require('express');
+const routerLogin=require('../autenticazione/Routing/loginRouter');
+const mid=require('../autenticazione/Middleware/mid');
+// const app=express();
+
+app.use(express.json());
+
+app.use('/login',routerLogin);
+
+
+app.get('/foto',[mid.checkAuth],(req,res) => {
+    res.end("Sono la home");
+});
 
 
 module.exports = app;

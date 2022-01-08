@@ -8,7 +8,7 @@ app.use(express.json());
 app.use('/login',routerLogin);
 
 
-app.get('/',[mid.checkAuth],(req,res) => {
+app.get('/foto',[mid.checkAuth],(req,res) => {
     res.end("Sono la home");
 });
 
