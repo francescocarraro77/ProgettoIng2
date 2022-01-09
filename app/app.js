@@ -213,8 +213,20 @@ app.get("/api/v1/validatoken", function (req, res) {
 });
 
 app.post('/api/v1/wipedb',[mid.checkAuth],(req,res) => {
+/*
   console.log("Wipedb");
   res.end("Validazione strong effettuata correttamente. Ora potrei wippare il db...");
+*/
+personaModello.deleteMany({}).exec((err, doc) => {
+  res.send("Wipe effettuato!");
+});
+});
+
+app.post("/api/v1/deletemany", function (req, res) {
+personaModello.deleteMany({}).exec((err, doc) => {
+  res.send("Wipe effettuato!");
+});
+
 });
 
 module.exports = app;
