@@ -37,10 +37,6 @@ git checkout master
 ssh-keygen -t rsa -C "francesco.carraro@studenti.unitn.it"
 // verrà creata una nuova chiave in c:\users\XXXXX\.ssh\id_rsa.pub che bisogna inserire nelle impostazioni web di github
 
-
-
-
-
 npm test
 // per lanciare jest che andrà a cercare in tutta la repository eventuali file *.test.js
 
@@ -51,6 +47,11 @@ https://devcenter.heroku.com/articles/heroku-cli
 CLI log in:
 heroku login
 
+Comandi Win64OpenSSL_Light-1_1_1m per generare le chiavi da scaricare in locale:
 
+openssl genrsa -out rsa.key 1024
+// per generare chiave privata
 
+openssl rsa -in rsa.key -out rsa.pem -pubout -outform PEM
+// per generare la chiave pubblica
 
