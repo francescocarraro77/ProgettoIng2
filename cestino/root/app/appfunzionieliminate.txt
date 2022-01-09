@@ -1,0 +1,48 @@
+
+///////////// PARTE DA CESTINARE ///////////// 
+
+
+
+/*
+app.get("/api/selezionapersona", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../public/selezionapersona.html'));
+});
+*/
+
+
+
+/*
+//Or we can protect specific endpoints, by associating the tockenChecker with specific url:
+
+app.use('/api/v1/booklendings', tokenChecker);
+...
+// only requests matching '/api/v1/booklendings' have been authenticated by the tokenChecker
+app.use('/api/v1/booklendings', booklendings);
+// Requests on '/api/v1/students' are not authenticated
+app.use('/api/v1/students', books);
+*/
+
+
+/*
+app.use('/api/v1/autenticazione', autenticazione);
+app.use('/api/v1/autenticazione', tokenChecker);
+app.get("/api/v1/autenticazione", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../public/listapersonehtmlv1.html'));
+});
+*/
+
+
+/*
+app.get('/foto',[mid.checkAuth],(req,res) => {
+    res.end("Sono la home");
+});
+*/
+
+/*
+// Effettua il wipe del DB senza passare per il middleware
+app.post("/api/v1/deletemany", function (req, res) {
+personaModello.deleteMany({}).exec((err, doc) => {
+  res.send("Wipe effettuato!");
+});
+});
+*/
