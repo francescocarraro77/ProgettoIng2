@@ -195,18 +195,33 @@ app.get("/api/v1/generatoken", function (req, res) {
 });
 
 app.post("/api/v1/generatoken", function (req, res) {
-
-
   console.log(req.body.username,req.body.password);
   if (req.body.username=='pippo'){
       let token=jwt.setToken(2,req.body.username);
       let payload=jwt.getPayload(token);
       res.json({ token:token,payload:payload});
+
+
+
+//    console.log(mid.checkAuth);
+
   } else {
       res.sendStatus(401);
   }
 
+});
 
+
+app.get("/api/v1/validatoken", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../autenticazione/validazionetoken.html'));
+});
+
+app.get('/api/v1/foto',[mid.checkAuth],(req,res) => {
+
+  console.log("Getfoto");
+
+  res.end("Sono la home");
+});
 
 
 /*
@@ -220,11 +235,9 @@ app.post("/api/v1/generatoken", function (req, res) {
   console.log("Inserito in mongo");
 */
 
-app.get('/foto',[mid.checkAuth],(req,res) => {
-  res.end("Sono la home");
-});
 
-});
+
+
 
 
 module.exports = app;
