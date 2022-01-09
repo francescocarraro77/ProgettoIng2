@@ -14,9 +14,6 @@ const jwt=require('../autenticazione/Middleware/jwt');
 //const mid=require('../autenticazione/Middleware/mid');
 
 
-
-
-
 var bodyParser = require('body-parser');
 const { Mongoose } = require('mongoose');
 app.use(bodyParser.json()); // support json encoded bodies
@@ -133,7 +130,6 @@ app.get('/api/v1/elimina/:id', function (req, res) {
 })
 
 app.get('/api/elimina/:id', function (req, res) {
-
   id = req.params.id - 1; // sottraggo 1 in quanto l'indice dell'array parte da 0
   personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
@@ -201,9 +197,9 @@ app.post("/api/v1/generatoken", function (req, res) {
       let payload=jwt.getPayload(token);
       res.json({ token:token,payload:payload});
 
+    console.log(token);
 
-
-//    console.log(mid.checkAuth);
+    
 
   } else {
       res.sendStatus(401);
@@ -216,28 +212,9 @@ app.get("/api/v1/validatoken", function (req, res) {
   res.sendFile(path.join(__dirname + '/../autenticazione/validazionetoken.html'));
 });
 
-app.get('/api/v1/foto',[mid.checkAuth],(req,res) => {
-
-  console.log("Getfoto");
-
-  res.end("Sono la home");
+app.post('/api/v1/wipedb',[mid.checkAuth],(req,res) => {
+  console.log("Wipedb");
+  res.end("Validazioe strong effettuata correttamente. Ora potrei wippare il db...");
 });
-
-
-/*
-  const persona = new personaModello({ Cognome: req.body.cognome, Nome: req.body.nome, Anno: req.body.anno });
-
-  persona.save(function (err) {
-    if (err) return console.error(err);
-    console.log("Inserimento effettuato");
-  });
-  res.send("Inserito in mongo");
-  console.log("Inserito in mongo");
-*/
-
-
-
-
-
 
 module.exports = app;
