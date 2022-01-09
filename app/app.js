@@ -214,7 +214,7 @@ app.get("/api/v1/validatoken", function (req, res) {
 
 app.post('/api/v1/wipedb',[mid.checkAuth],(req,res) => {
   console.log("Wipedb");
-  res.end("Validazioe strong effettuata correttamente. Ora potrei wippare il db...");
+  res.end("Validazione strong effettuata correttamente. Ora potrei wippare il db...");
 });
 
 module.exports = app;
