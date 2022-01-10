@@ -4,13 +4,13 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-const jwt=require('../autenticazione/Middleware/jwt');
+const jwt = require('../autenticazione/Middleware/jwt');
 var bodyParser = require('body-parser');
 const { Mongoose } = require('mongoose');
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true })); 
-const routerLogin=require('../autenticazione/Routing/loginRouter');
-const mid=require('../autenticazione/Middleware/mid');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const routerLogin = require('../autenticazione/Routing/loginRouter');
+const mid = require('../autenticazione/Middleware/mid');
 app.use(express.json());
 //app.use('/login',routerLogin);
 
@@ -85,7 +85,7 @@ app.get("/api/v1/persona/:id", (req, res) => {
   id = req.params.id - 1; // sottraggo 1 in quanto l'indice dell'array parte da 0
   personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
-//      res.send(doc[id]);
+      //      res.send(doc[id]);
       res.status(200).send(doc[id]);
     } else {
       res.send("Nessun record presente");
@@ -104,7 +104,7 @@ app.get("/api/eliminapersona", function (req, res) {
 app.get('/api/v1/elimina/:id', function (req, res) {
   var cognome = req.params.id;
   personaModello.findOneAndDelete({ Cognome: cognome }).exec((err, doc) => {
-    if ((doc!=null && (doc.length > 0)) ) { 
+    if ((doc != null && (doc.length > 0))) {
       res.send("RES KO"); // non viene stampato
     } else {
       res.send("RES OK");
@@ -139,14 +139,14 @@ app.get("/api/v1/generatoken", function (req, res) {
 
 // Risponde al metodo precedente in formato json ritornando il token
 app.post("/api/v1/generatoken", function (req, res) {
-  console.log(req.body.username,req.body.password);
-  if (req.body.username=='pippo'){
-      let token=jwt.setToken(2,req.body.username);
-      let payload=jwt.getPayload(token);
-      res.json({ token:token,payload:payload});
+  console.log(req.body.username, req.body.password);
+  if (req.body.username == 'pippo') {
+    let token = jwt.setToken(2, req.body.username);
+    let payload = jwt.getPayload(token);
+    res.json({ token: token, payload: payload });
     console.log(token);
   } else {
-      res.sendStatus(401);
+    res.sendStatus(401);
   }
 });
 
@@ -156,10 +156,21 @@ app.get("/api/v1/validatoken", function (req, res) {
 });
 
 // Effettua il wipe del DB passando prima per il middleware mid.checkAuth
-app.post('/api/v1/wipedb',[mid.checkAuth],(req,res) => {
-personaModello.deleteMany({}).exec((err, doc) => {
-  res.send("Wipe effettuato!");
+app.post('/api/v1/wipedb', [mid.checkAuth], (req, res) => {
+  personaModello.deleteMany({}).exec((err, doc) => {
+    res.send("Wipe effettuato!");
+  });
 });
+
+// Apre la pagina html del report jest
+app.get("/api/v1/jesthtmlreport", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../test-report.html'));
 });
+
+// Apre la pagina html con la lista dei principali comandi usati
+app.get("/api/v1/listacomandi", function (req, res) {
+  res.sendFile(path.join(__dirname + '/../public/listacomandi.txt'));
+});
+
 
 module.exports = app;
