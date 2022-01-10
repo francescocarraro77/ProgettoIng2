@@ -85,7 +85,8 @@ app.get("/api/v1/persona/:id", (req, res) => {
   id = req.params.id - 1; // sottraggo 1 in quanto l'indice dell'array parte da 0
   personaModello.find().exec((err, doc) => {
     if (doc.length > 0) {
-      res.send(doc[id]);
+//      res.send(doc[id]);
+      res.status(200).send(doc[id]);
     } else {
       res.send("Nessun record presente");
       console.log("Nessun record presente");
