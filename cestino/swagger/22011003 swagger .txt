@@ -1,0 +1,144 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: "ProgettoIng2"
+  description: Progetto Ingegneria del Software - Francesco Carraro - https://progettoing2.herokuapp.com
+  license:
+    name: MIT
+host: progettoing2.herokuapp.com
+basePath: /api/
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /listapersonejson:
+    get:
+      description: >-
+        Ritorna la lista delle persone in formato JSON
+      summary: Lista persone
+
+      responses:
+        200:
+          description: 'Lista persone'
+          schema:
+            $ref: '#/definitions/User'
+
+  /v1/listapersonehtml:
+    get:
+      description: >-
+        Ritorna la lista delle persone in formato HTML
+      summary: Lista persone
+
+      responses:
+        200:
+          description: 'Lista persone'
+          schema:
+            $ref: '#/definitions/User'
+
+  /v1/inseriscipersona:
+    post:
+      description: >-
+        Crea ed inserisce una persona in Mongodb
+      summary: Crea un utente
+      parameters:
+        - name: register
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - Cognome
+              - Nome
+              - Anno
+            properties:
+              Cognome:
+                type: string
+                description: 'Cognome utente'
+              Nome:
+                type: string
+                description: 'Nome utente'
+              Anno:
+                type: integer
+                description: 'Anno di nascita'
+      responses:
+        201:
+          description: 'The created user'
+          schema:
+            $ref: '#/definitions/User'
+
+  /v1/persona/{id}:
+    get:
+      description: >-
+        Ritorna una persona data la sua posizione (indice iniziale 1) leggendo da Mongodb cloud
+      summary: Ritorna una persona
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 'Posizione utente'
+      responses:
+        200:
+          description: 'The user corresponding to the input ID'
+          schema:
+            $ref: '#/definitions/User'
+
+
+
+
+definitions:
+  User:
+    type: object
+    required:
+      - Cognome
+      - Nome
+      - Anno
+    properties:
+      Cognome:
+        type: string
+        description: 'Cognome utente'
+      Nome:
+        type: string
+        description: 'Nome utente'
+      Anno:
+        type: integer
+        description: 'Anno di nascita'
+  Assignment:
+    type: object
+    required:
+      - name
+      - deadline
+      - status
+    properties:
+      name:
+        type: string
+        description: 'Name for the assignment'
+      deadline:
+        type: string
+        description: 'Datetime of the deadline in ISO 8601 format'
+      status:
+        type: string
+        enum: [open, closed]
+        description: 'Defined whether the assignment is open for replies or not'
+  Mark:
+    type: object
+    required:
+    - userId
+    - assignmentId
+    - mark
+    properties:
+      userId:
+        type: integer
+        description: 'ID of the user the mark has been given to'
+      assignmentId:
+        type: integer
+        description: 'ID of the assignment'
+      mark:
+        type: string
+        description: 'The given mark value'
+      text:
+        type: string
+        description: 'Comment associated to the mark'
