@@ -163,4 +163,3 @@ personaModello.deleteMany({}).exec((err, doc) => {
 });
 
 module.exports = app;
-
