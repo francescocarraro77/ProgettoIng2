@@ -12,3 +12,5 @@ describe('Test di calcolo', () => {
     test('14/8 dovrebbe avere resto', () => {expect(operazioni.haResto(14,8)).toBeTruthy()});
 
 })
+
+// 10/1/22 ore 17:30 laptop12
