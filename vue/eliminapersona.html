@@ -106,11 +106,30 @@
             {
                 window.location.reload();
             },
-
+/*
             inserisciPersona()
             {
+                
+                console.log(this.info.data[this.counter].Cognome.length);
+                
+                window.alert(this.info.data[this.counter].Cognome.length);  
+
+                if (this.info.data[this.counter].Cognome.length<1)
+                {
+                    window.alert("Il campo COGNOME non è stato dichiarato");   
+
+                }
+
+                if (this.info.data[this.counter].Nome.length<1)
+                {
+                    window.alert("Il campo NOME non è stato dichiarato");   
+
+                }
 
                 const persona = new personaModello({ Cognome: insnome, Nome: inscognome, Anno: inseta });
+
+                window.alert(Cognome);
+                console.log("PIPPO");
 
                 persona.save(function (err) {
                 if (err) return console.error(err);
@@ -119,7 +138,7 @@
                 });
                 
             },
-        
+*/        
             eliminaPersona()
             {
                 window.alert("Elimina persona "+ this.info.data[this.counter]._id + " " + this.info.data[this.counter].Cognome);   
