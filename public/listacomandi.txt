@@ -1,13 +1,5 @@
 Principali comandi utilizzati:
 
-
-git push -u origin master
-per caricare la cartella di lavoro locale su server
-
-git pull origin master
-per scaricare la cartella di lavoro su un un altro computer
-
-
 git init
 // per inizializzare una cartella locale
 
@@ -17,14 +9,14 @@ git remote add origin git@github.com:francescocarraro77/ProgettoIng2.git
 git add .
 // per aggiungere la repository nella staging area
 
-git commit -m "first commit"
+git commit -m "label"
 // per committare il lavoro
 
 git push -u origin master
-// per caricare la repository su server
+per caricare la cartella di lavoro locale su server
 
 git pull origin master
-// per scaricare la repository in locale
+per scaricare la cartella di lavoro su un un altro computer
 
 git log --oneline
 // per visualizzare la lista dei commit
