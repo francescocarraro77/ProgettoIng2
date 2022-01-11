@@ -141,7 +141,13 @@
 */        
             eliminaPersona()
             {
-                window.alert("Elimina persona "+ this.info.data[this.counter]._id + " " + this.info.data[this.counter].Cognome);   
+//                window.alert(this.info.data[this.counter].Cognome.length);
+                window.alert("Elimina persona "+ this.info.data[this.counter]._id + " " + this.info.data[this.counter].Cognome);
+
+                
+//                if (this.info.data[this.counter].Cognome.length==0)
+//                    window.alert("Cognome non definito");
+
                 axios
                 .get('/api/v1/elimina/'+this.info.data[this.counter].Cognome)
                 window.location.reload();
