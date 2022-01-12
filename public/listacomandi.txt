@@ -62,3 +62,5 @@ npm install --save-dev jest-html-reporter
     ]
   }
 
+mongodb+srv://User:Useraccess@cluster0.dd8e5.mongodb.net/DBAnagrafica?retryWrites=true&w=majority
+// Stringa connessione mongodb Compass
