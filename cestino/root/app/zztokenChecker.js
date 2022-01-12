@@ -1,3 +1,4 @@
+/*
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 const tokenChecker = function(req, res, next) {
@@ -32,3 +33,4 @@ const tokenChecker = function(req, res, next) {
 };
 
 module.exports = tokenChecker
+*/
