@@ -35,7 +35,7 @@ app.post('/getpost', function (req, res) {
 });
 
 // Ritorna la lista delle persone in formato JSON
-app.get("/api/listapersonejson", async (req, res, next) => {
+app.get("/api/v1/listapersonejson", async (req, res, next) => {
   try {
     const query1 = personaModello.find();
     const result1 = await query1.exec();
