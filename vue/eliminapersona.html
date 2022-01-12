@@ -96,7 +96,7 @@
 
         mounted() {
             axios
-                .get('/api/listapersonejson')
+                .get('/api/v1/listapersonejson')
                 .then(response => (this.info = response))
         },
 
